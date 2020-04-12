@@ -4,6 +4,7 @@ class Weapon {
         this.name = name;
         this.attack = attack;
         this.durability = durability;
+        this.durabilityOriginal = durability;
         this.range = range;        
     }
     takeDamage(damage) {        
@@ -13,8 +14,8 @@ class Weapon {
     getDamage() {      
         if (this.durability === 0) {
           return this.attack = 0;
-        } else if (this.durability < this.durability*0.3) {          
-          return this.attack = this.attack / 2;
+        } else if (this.durability < this.durabilityOriginal*0.3) {          
+          return this.attack / 2;
         } else {
           return this.attack;
         }
@@ -81,8 +82,7 @@ class Bow extends Weapon {
   class StudentLog {
     constructor(name) {
       this.name = name;
-      this.amountGrades = [];    
-      this.averageBySubject;
+      this.amountGrades = [];
       this.subjectNames = {};
     }
     getName(name) {
@@ -108,8 +108,8 @@ class Bow extends Weapon {
         this.amountGrades.push(this.getAverageMark(this.subjectNames[subject]));   
         return this.getAverageMark(this.subjectNames[subject]);
     }
-    getTotalAverage() {      
-        if (this.amountGrades.length === 0) {
+    getTotalAverage() { 
+          if (this.amountGrades.length === 0) {
           return 0;
         }
         return this.getAverageMark(this.amountGrades);
