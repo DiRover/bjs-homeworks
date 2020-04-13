@@ -82,7 +82,7 @@ class Bow extends Weapon {
   class StudentLog {
     constructor(name) {
       this.name = name;
-      this.amountGrades = [];
+      this.amountGrades = [];    
       this.subjectNames = {};
     }
     getName(name) {
@@ -98,20 +98,21 @@ class Bow extends Weapon {
             this.subjectNames[subject] = [];
             this.subjectNames[subject].push(grade);               
           }
-        }    
+        }
+      
+      this.amountGrades.push(grade);    
       return this.subjectNames[subject].length;
     }
     getAverageBySubject(subject) {           
         if (!this.subjectNames.hasOwnProperty(subject)) {
           return 0;
-        }      
-        this.amountGrades.push(this.getAverageMark(this.subjectNames[subject]));   
+        }         
         return this.getAverageMark(this.subjectNames[subject]);
     }
-    getTotalAverage() { 
+    getTotalAverage() {            
           if (this.amountGrades.length === 0) {
           return 0;
-        }
+        } 
         return this.getAverageMark(this.amountGrades);
     }
     getAverageMark(marks) {
