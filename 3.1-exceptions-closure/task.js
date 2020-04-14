@@ -26,8 +26,9 @@ class Triangle {
     getPerimeter() {
       return this.a + this.b + this.c;
     }
-    getArea() {    
-      let area = 0.25 * Math.sqrt(Math.pow((Math.pow(this.a, 2) + Math.pow(this.b, 2) + Math.pow(this.c, 2)), 2) - 2 * (Math.pow(this.a, 4) + Math.pow(this.b, 4) + Math.pow(this.c, 4)));        
+    getArea() { 
+      let semiPerimeter = (this.a + this.b + this.c) / 2;
+      let area = Math.sqrt(semiPerimeter * (semiPerimeter - this.a) * (semiPerimeter - this.b) * (semiPerimeter - this.c));
       return Number.parseFloat(area.toFixed(3));
     }
   };
@@ -37,6 +38,10 @@ class Triangle {
       const triangle = new Triangle(a, b, c);
       return triangle;
     }catch(e){
-      return e;
+      const obj = {
+        getPerimeter: () => "Ошибка! Неправильный треугольник",
+        getArea: () => "Ошибка! Неправильный треугольник"
+      }
+      return obj;
     }
   };
