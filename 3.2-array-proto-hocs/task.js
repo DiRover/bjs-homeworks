@@ -24,16 +24,14 @@ function memorize(fn, limit) {
   return function (...args) {
     let findResult = memory.find(elem => compareArrays(elem.args, args));
     //let findResult = memory.find(function(elem){compareArrays(elem.args, args)}) // - ещё один вариант
-    if (findResult !== undefined) {
+    if (findResult) {
       console.log('Result from memory');
       return findResult.result
     }       
-    if (memory.length !== limit) {
-      memory.push({args: args, result: fn(...args)})
-    } else {      
+    if (memory.length === limit) {
       memory.shift()
-      memory.push({args: args, result: fn(...args)})            
-    }
+    }   
+    memory.push({args: args, result: fn(...args)})  
     return fn(...args)
   } 
 }

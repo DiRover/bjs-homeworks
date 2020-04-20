@@ -53,3 +53,17 @@ class AlarmClock {
     this.alarmCollection = [];
   }
 }
+function testCase() {
+  const phoneAlarm = new AlarmClock();
+  phoneAlarm.addClock("14:07", () => console.log('Lanch time'), 11);
+  phoneAlarm.addClock("14:08", () => {console.log('Ready for work'); phoneAlarm.removeClock(22)}, 22);
+  phoneAlarm.addClock("14:08", () => console.log('Go for a work'), 11);
+  phoneAlarm.addClock("14:09", () => {
+    console.log('Some text');
+    phoneAlarm.clearAlarms();
+    phoneAlarm.printAlarms()
+  }, 33);
+  phoneAlarm.addClock("14:10", () => console.log('Other text'), 11);
+}
+
+testCase();
