@@ -29,9 +29,9 @@ class AlarmClock {
     let now = date.toLocaleTimeString().slice(0, 5);
     return now
   }
-  start() {
+  start() {   
     let checkClock = (call) => {
-      if (call.time === this.getCurrentFormattedTime) {
+      if (call.time === this.getCurrentFormattedTime()) {
         call.callback();
       }
     }    
@@ -55,15 +55,14 @@ class AlarmClock {
 }
 function testCase() {
   const phoneAlarm = new AlarmClock();
-  phoneAlarm.addClock("14:07", () => console.log('Lanch time'), 11);
-  phoneAlarm.addClock("14:08", () => {console.log('Ready for work'); phoneAlarm.removeClock(22)}, 22);
-  phoneAlarm.addClock("14:08", () => console.log('Go for a work'), 11);
-  phoneAlarm.addClock("14:09", () => {
+  phoneAlarm.addClock("17:44", () => console.log("XXXXX"), 11);
+  phoneAlarm.addClock("17:45", () => {console.log("TTTTTT"); phoneAlarm.removeClock(22)}, 22);
+  phoneAlarm.addClock("17:46", () => {
     console.log('Some text');
     phoneAlarm.clearAlarms();
     phoneAlarm.printAlarms()
   }, 33);
-  phoneAlarm.addClock("14:10", () => console.log('Other text'), 11);
+  phoneAlarm.start();  
 }
 
 testCase();
